@@ -2,18 +2,21 @@ name: Update Free Nodes Subscription
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天 UTC 0:00 (北京时间 08:00) 自动触发
-  workflow_dispatch: # 支持在 GitHub 网页手动点击触发
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write # 明确赋予写权限
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 

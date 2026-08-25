@@ -1,8 +1,6 @@
 import requests
 import base64
-import yaml
 
-# 高星且每日自动更新的公开节点源
 SOURCES = [
     "https://raw.githubusercontent.com/freefq/free/master/v2",
     "https://raw.githubusercontent.com/m2ray/v2rayN-share/main/sub/sub_merge.txt",
@@ -36,8 +34,8 @@ def get_nodes():
 
 if __name__ == "__main__":
     nodes = get_nodes()
-    # 写入裸 base64
     merged_str = "\n".join(nodes)
     encoded_str = base64.b64encode(merged_str.encode('utf-8')).decode('utf-8')
+    
     with open("sub.txt", "w", encoding="utf-8") as f:
         f.write(encoded_str)
